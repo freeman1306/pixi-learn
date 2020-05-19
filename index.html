@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <script src="js/pixi.min.js"></script>
+    <script>
+        // let renderer = PIXI.autoDetectRenderer(256, 256, {
+        //     antialias: false,
+        //     transparent: false,
+        //     resolution: 1
+        // })
+        // let stage = new PIXI.Container()
+
+        // document.body.appendChild(renderer.view)
+
+        // renderer.render(stage)
+
+
+
+        // PIXI.loader
+        //     .add('imgs/player.png')
+        //     .load(setup)
+
+
+
+        // function setup() {
+        //     let pixie = new PIXI.Sprite(
+        //         PIXI.loader.resources['imgs/player.png'].texture
+        //     )
+
+        //     stage.addChild(pixie)
+
+        //     renderer.render(stage)
+
+        //     setTimeout(
+        //         () => {
+        //             pixie.visible = false
+        //             renderer.render(stage)
+        //         }, 1000
+        //     )
+
+
+        // }
+
+
+        // Aliases
+
+        let Container = PIXI.Container,
+            autoDetectRenderer = PIXI.autoDetectRenderer,
+            loader = PIXI.loader,
+            resources = PIXI.loader.resources,
+            Sprite = PIXI.Sprite
+
+
+        // Create the stage and renderer
+
+        let stage = new Container,
+            renderer = autoDetectRenderer(256, 256)
+
+        document.body.appendChild(renderer.view)
+
+
+        //Load an image and call the `setup` function
+        loader.add("imgs/player.png")
+            .load(setup)
+
+
+        function setup() {
+            //Create the sprite, add it to the stage and render it
+            let pixie = new Sprite(resources["imgs/player.png"].texture)
+            stage.addChild(pixie)
+            renderer.render(stage)
+        }
+    </script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0
+        }
+    </style>
+</body>
+
+</html>
